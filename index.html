@@ -1,6 +1,8 @@
 <!DOCTYPE html>
 <html>
 <head>
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <title>Timefruit</title>
     <style>
         body {
             margin: 0;
@@ -10,16 +12,17 @@
             justify-content: center;
             align-items: center;
         }
-
         .center-image {
             position: absolute;
             z-index: 1;
+            object-fit: contain; /* Maintain aspect ratio */
         }
-
         .moving-image {
             position: absolute;
             left: 100vw;            
             z-index: 2;
+            height: 50px; /* Fixed height */
+            width: auto; /* Maintain aspect ratio */
         }
         
         #fish1 {
@@ -29,7 +32,6 @@
         #fish2 {
           top: 38vh;
         }
-
         @keyframes moveLeft1 {
             from {
                 left: 180vw;
@@ -38,7 +40,6 @@
                 left: -20vw;
             }
         }
-
         @keyframes moveLeft2 {
             from {
                 left: 110vw;
@@ -47,7 +48,6 @@
                 left: -220vw;
             }
         }
-
         @keyframes swimMotion {
             0%, 100% {
                 margin-top: 0;
@@ -59,7 +59,6 @@
                 margin-top: 18px;
             }
         }
-
         @keyframes fishTilt {
             0%, 100% {
                 transform: rotate(0deg);
@@ -74,14 +73,12 @@
     </style>
 </head>
 <body>
-    <img src="/img/under-construction-icon-1242121.jpg" alt="Centered Image" class="center-image">
-    <img src="/img/fish_384_226.png" id="fish1" height="50px" alt="Fish 1" class="moving-image">
-    <img src="/img/fish_384_226.png" id="fish2" height="50px" alt="Fish 2" class="moving-image">
-
+    <img src="img/under-construction-icon-1242121.jpg" alt="Centered Image" class="center-image">
+    <img src="img/fish_84_50.png" id="fish1" alt="Fish 1" class="moving-image">
+    <img src="img/fish_84_50.png" id="fish2" alt="Fish 2" class="moving-image">
     <script>
         const fish1 = document.querySelector('#fish1');
         const fish2 = document.querySelector('#fish2');
-
         function startAnimation() {
             fish1.style.animation = 'none';
             fish1.offsetHeight; // Trigger reflow
@@ -103,7 +100,6 @@
                 }
             }, { once: true });
         }
-
         // Start the initial animation
         startAnimation();
     </script>
